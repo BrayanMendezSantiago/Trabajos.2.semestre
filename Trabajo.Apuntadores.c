@@ -10,9 +10,10 @@ int menu(void){
   int op;
   printf("***Menu***\n");
   printf("[1]...Crear dato\n");
-  printf("[2]...Mostrar dato\n");
-  printf("[3]...Liberar\n");
-  printf("[4]...Salir\n");
+  printf("[2]...Funciones\n");
+  printf("[3]...Mostrar dato\n");
+  printf("[4]...Liberar\n");
+  printf("[5]...Salir\n");
   scanf("%d",&op);
 return op;
 }
@@ -29,10 +30,24 @@ struct Dato *crearDato(){
     return nuevo;
   }  
 }
+ int submenu(void){
+  int op2;
+  printf("***SUB MENU***\n");
+  printf("[1]...Buscar\n");
+  printf("[2]...Contar\n");
+  printf("[3]...Remplazar\n");
+  printf("[4]...Ordenar\n");
+  printf("[5]...Regresar\n");
+  scanf("%d",&op2);
+  return op2;
+ }
+
   int main(void){
-  struct Dato *ptr=NULL,*nuevo=NULL,*ptraux,*ant;
+  struct Dato *ptr=NULL,*nuevo=NULL,*ptraux,*ant,*cont;
   int op;
- 
+  int op2;
+
+
   do{
     op=menu();
       switch(op){
@@ -53,6 +68,33 @@ struct Dato *crearDato(){
           }
             break;
         case 2:
+        do{
+          op2 = submenu();
+            switch (op2) {
+            case 1:
+              printf("Elejiste la opcion 1\n");
+              break;
+            case 2:
+              printf("Elejiste la opcion 2\n");
+              
+              for(int i=0; i<nuevo; i++){
+              cont = ptr;
+               printf("El valor de nodos son: \n",cont);
+              
+              }
+              
+              break;
+            case 3:
+              printf("Saliendo...\n");
+              break;
+            default:
+            printf("Opcion erronea\n");
+            }
+
+          }while (op2 != 3);
+          
+        break;
+        case 3:
           if(ptr!=NULL){
             ptraux = ptr;
             while (ptraux != NULL){
@@ -64,7 +106,7 @@ struct Dato *crearDato(){
             printf("No hay datos almacenados.\n");
           }
           break;
-          case 3:
+          case 4:
             if(ptr == NULL){
               printf("No hay nodos\n");
             }else if(ptr->sig == NULL){
@@ -82,7 +124,7 @@ struct Dato *crearDato(){
             free(ptraux);
           }
           break;
-          case 4:
+          case 5:
             while (ptr!=NULL){
               ptraux = ptr;
               ptr = ptraux->sig;
@@ -94,7 +136,8 @@ struct Dato *crearDato(){
               printf("Opcion no valida.\n");
         }        
       
-    }while(op != 4);
+    }while(op != 5);
     
 return 0;
 }
+
