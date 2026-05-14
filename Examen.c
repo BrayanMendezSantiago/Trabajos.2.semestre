@@ -41,7 +41,7 @@ int main(){
 
             }else{
 
-                printf("Ingrese dato: ");
+                printf("Ingresar dato: ");
                 scanf("%d",&nuevo->d);
 
                 if(ptr==NULL){
